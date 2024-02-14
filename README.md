@@ -2,6 +2,8 @@
 
 PongAI is a modern take on the classic game of Pong, enhanced with the power of Artificial Intelligence. This project enables users to train a neural network to play Pong, compete against the AI, or enjoy a classic two-player game.
 
+This project utilizes the entire game frame as input for the neural network model, which allows the AI to learn and make decisions based on the current state of the game. The network architecture is designed around a Deep Q-Network (DQN) model, consisting of convolutional layers that process the frame, followed by dense layers that output the decision for the next move.
+
 ## Features
 
 - **AI Training**: Train an AI model to learn playing Pong by observing and adapting to gameplay.
@@ -23,9 +25,11 @@ The game and AI are built using several powerful libraries. Ensure you have the 
 
 Before running the game, install the required libraries using pip:
 
+
 ```bash
 pip install pygame numpy tensorflow matplotlib opencv-python
 ```
+
 
 
 ## Structure
@@ -40,9 +44,11 @@ pip install pygame numpy tensorflow matplotlib opencv-python
 
 To train the model, run:
 
+
 ```bash
 python main.py
 ```
+
 
 
 This will initiate the training process. The model will learn by playing against itself. Progress can be monitored via the console output.
@@ -51,9 +57,11 @@ This will initiate the training process. The model will learn by playing against
 
 Once the model is trained, you can test your skills against it:
 
+
 ```bash
 python main1vsKI.py
 ```
+
 
 
 Use the up and down arrow keys to control your paddle.
@@ -62,9 +70,11 @@ Use the up and down arrow keys to control your paddle.
 
 To play a game of Pong with a friend:
 
+
 ```bash
 python main_2Players.py
 ```
+
 
 
 Player 1 uses the W and S keys, while Player 2 uses the up and down arrow keys.
