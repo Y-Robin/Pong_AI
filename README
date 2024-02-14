@@ -39,6 +39,7 @@ pip install pygame numpy tensorflow matplotlib opencv-python
 ### Training the AI
 
 To train the model, run:
+
 ```bash
 python main.py
 ```
