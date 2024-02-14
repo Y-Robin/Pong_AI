@@ -25,6 +25,7 @@ Before running the game, install the required libraries using pip:
 
 ```bash
 pip install pygame numpy tensorflow matplotlib opencv-python
+```
 
 
 ## Structure
@@ -40,6 +41,7 @@ pip install pygame numpy tensorflow matplotlib opencv-python
 To train the model, run:
 ```bash
 python main.py
+```
 
 
 This will initiate the training process. The model will learn by playing against itself. Progress can be monitored via the console output.
@@ -50,6 +52,7 @@ Once the model is trained, you can test your skills against it:
 
 ```bash
 python main1vsKI.py
+```
 
 
 Use the up and down arrow keys to control your paddle.
@@ -60,6 +63,7 @@ To play a game of Pong with a friend:
 
 ```bash
 python main_2Players.py
+```
 
 
 Player 1 uses the W and S keys, while Player 2 uses the up and down arrow keys.
