@@ -30,9 +30,9 @@ pip install pygame numpy tensorflow matplotlib opencv-python
 
 ## Structure
 
-- `main.py`: The script used to train the AI model.
-- `main1vsKI.py`: A script that allows you to play against the trained AI.
-- `main_2Players.py`: A script for a classic two-player game without AI.
+- "main.py": The script used to train the AI model.
+- "main1vsKI.py": A script that allows you to play against the trained AI.
+- "main_2Players.py": A script for a classic two-player game without AI.
 
 ## Usage
 
@@ -71,11 +71,11 @@ Player 1 uses the W and S keys, while Player 2 uses the up and down arrow keys.
 
 ## Custom Game Environment
 
-The game leverages a custom Pong environment (`pong_game.py`) tailored for AI interaction and classic gameplay.
+The game leverages a custom Pong environment ("pong_game.py") tailored for AI interaction and classic gameplay.
 
 ## AI Model
 
-The AI (`model.py`) is built using TensorFlow and employs a Deep Q-Network (DQN) to learn the game.
+The AI ("model.py") is built using TensorFlow and employs a Deep Q-Network (DQN) to learn the game.
 
 ## Contributing
 
