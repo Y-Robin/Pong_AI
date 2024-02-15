@@ -51,7 +51,7 @@ class DQNModel:
         self.memory = deque(maxlen=200000)
 
         # Exploration parameters
-        self.epsilon_min = 0.01 # Minimum exploration rate
+        self.epsilon_min = 0.001 # Minimum exploration rate
         self.epsilon_decay = 0.99 # Decay rate for exploration
         
         
@@ -147,14 +147,14 @@ class DQNModel:
             # Compute target Q values
             for j in range(self.miniSize):
                 if rewards[j] < -0.8:
-                    target_qs = rewards + self.gamma * -10 * (1 - dones)
+                    target_qs[j] = rewards[j] + self.gamma * -10 * (1 - dones[j])
                 else:
-                    target_qs = rewards + self.gamma * 5 * (1 - dones)
+                    target_qs[j] = rewards[j] + self.gamma * 5 * (1 - dones[j])
 
             # Compute Q values for current states
             current_qs = self.model.predict(states)
             for index in range(self.miniSize):
-                current_qs[index][actions[index]] = target_qs[index]
+                current_qs[index][actions[index]] = target_qs[index,0]
             
             # Possible Visualization of batches and conv layers
             # self.inspect_batch(states, current_qs, rewards)

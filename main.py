@@ -25,14 +25,18 @@ def main():
     # Model setup
     input_shape = (game.HEIGHTM, game.WIDTHM, 2)  # Input shape for the model
     action_size = 2  # Number of possible actions (up, down)
-    model = DQNModel(input_shape, action_size,True) # Initialize the model
+    model = DQNModel(input_shape, action_size,False) # Initialize the model
     numColBest = model.MaxScore
     batch_size = 32
 
     # Initial states
     game.update(0, 0)
+    game.draw()
+    clock.tick(1000)
     prev_state = game.get_game_state()
     game.update(0, 0)
+    game.draw()
+    clock.tick(1000)
     current_state = game.get_game_state()
     state = np.stack((prev_state, current_state), axis=-1)  # Combine two frames
     
@@ -62,11 +66,14 @@ def main():
 
         # Update game state based on model predictions
         game_over = game.update(stateBib[action_left], stateBib[action_right])
+        
+        # Draw/update the game screen
+        game.draw()
+        clock.tick(1000)
 
         # Prepare for the next state
         prev_state = current_state
         current_state = game.get_game_state()
-        mirrored_current_state = np.flip(current_state, axis=1)
         stateOld = state
         state = np.stack((prev_state, current_state), axis=-1)
         
@@ -75,9 +82,7 @@ def main():
         model.remember(stateOld, action_left, r_l, state, game_over)  # For left paddle
         model.remember(mirrored_state, action_right, r_r, np.flip(state, axis=1), game_over)  # For right paddle
 
-        # Draw/update the game screen
-        game.draw()
-        clock.tick(1000)
+        
 
         # Handle game over and training
         if game_over:
@@ -108,9 +113,16 @@ def main():
             
             # Reset game for next round
             game.update(0, 0)
+            # Draw/update the game screen
+            game.draw()
+            clock.tick(1000)
             prev_state = game.get_game_state()
             game.update(0, 0)
+            # Draw/update the game screen
+            game.draw()
+            clock.tick(1000)
             current_state = game.get_game_state()
+            state = np.stack((prev_state, current_state), axis=-1)
 
     pygame.quit()
 
